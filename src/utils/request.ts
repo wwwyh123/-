@@ -1,8 +1,7 @@
 //进行axios二次封装：使用请求与响应拦截器
 import axios from 'axios'
-import Nprogress from 'nprogress'
-import 'nprogress/nprogress.css'
 import { ElMessage } from 'element-plus';
+import useUserStore from '../store/modules/user';
 let requests = axios.create({
   //基础路径
   baseURL: import.meta.env.VITE_APP_BASE_API,
@@ -12,13 +11,15 @@ let requests = axios.create({
 //第二步，给axios添加请求和响应拦截器
 requests.interceptors.request.use((config) => {
   //config,有headers请求头属性，给服务器携带公共参数
-  Nprogress.start();//核心代码
+  let userStore = useUserStore()
+  if (userStore.token) {
+    config.headers.token = userStore.token
+  }
   //返回配置对象
   return config
 })
 //第三步：相应拦截器
 requests.interceptors.response.use((response) => {
-  Nprogress.done()    //核心代
   //成功的回调
   //简化数据
   return response.data

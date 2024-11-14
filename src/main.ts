@@ -8,6 +8,13 @@ const app = createApp(App)
 document.body.appendChild(icon);
 import ElementPlus from 'element-plus'
 import zhCn from 'element-plus/es/locale/lang/zh-cn'
+//将icon图标引入并注册为全局组件
+import * as ElementPlusIconsVue from '@element-plus/icons-vue'
+for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
+  app.component(key, component)
+}
+//引入全局路由守卫
+import '../permission'
 //测试代码
 // import axios from 'axios'
 // axios({

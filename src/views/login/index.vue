@@ -25,10 +25,11 @@
 import {User,Unlock} from '@element-plus/icons-vue'
 import {reactive,ref} from 'vue'
 import useUserStore from '../../store/modules/user'
-import {useRouter} from "vue-router"
+import {useRouter,useRoute} from "vue-router"
 import { ElNotification } from 'element-plus';
 //获取路由器
 let $router = useRouter()
+let $route = useRoute()
 let useStore = useUserStore()
 let loginForm = reactive({username:'',password:''})
 let IsSuccess = ref(false)
@@ -46,7 +47,8 @@ const login = async ()=>{
   try{
     await useStore.userLogin(loginForm)
     //编程式导航 
-    $router.push('/')
+    let redirect:any=$route.query.redirect
+    $router.push({path:redirect||'/'})
     let message=getTime()
     ElNotification({
       type: 'success',
@@ -82,7 +84,7 @@ const getTime = () =>{
 const rules = reactive({
   username: [
     { required: true, message: '请输入用户名', trigger: 'change' },
-     { min: 3, max: 5, message: '用户名长度应为3~5个字符', trigger: 'change' },
+     { min: 3, max: 6, message: '用户名长度应为3~6个字符', trigger: 'change' },
   ],
   password:[
     {required: true,min: 6,message: '密码长度至少六位',trigger: 'change'}
