@@ -45,16 +45,32 @@ export default defineConfig(({ command, mode }) => {
     },
     //代理跨域
     server: {
+      // proxy: {
+      //   [env.VITE_APP_BASE_API]: {
+      //     //获取数据的服务器地址设置
+      //     target: env.VITE_SERVE,
+      //     //需要代理跨域
+      //     changeOrigin: true,
+      //     //路径重写
+      //     rewrite: (path) => path.replace(/^\/api/, ''),
+      //   }
+      // },
       proxy: {
-        [env.VITE_APP_BASE_API]: {
+        "/api/admin/acl": { // 更新代理规则以匹配新的路径
+          target: "http://sph-api.atguigu.cn", // 目标后端服务
+          changeOrigin: true,
+          rewrite: (path) => path.replace(/^\/api/, ''),
+        },
+        "/api": {
           //获取数据的服务器地址设置
-          target: env.VITE_SERVE,
+          target: "http://39.98.123.211:8510",
           //需要代理跨域
           changeOrigin: true,
           //路径重写
           rewrite: (path) => path.replace(/^\/api/, ''),
         }
       }
+
     }
   }
 }

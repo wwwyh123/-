@@ -24,7 +24,7 @@ export let constantRoutes = [
     children: [
       {
         path: '/home',
-        component: () => import('@/views/home/index.vue'),
+        component: () => import('@/layout/main/index.vue'),
         meta: {
           title: '首页',
           hidden: false,
@@ -104,7 +104,7 @@ export let constantRoutes = [
     children: [
       {
         path: '/product/trademark',
-        component: () => import('@/api/product/trademark/index.vue'),
+        component: () => import('@/views/product/trademark/index.vue'),
         name: 'Trademark',
         meta: {
           title: '品牌管理',
@@ -113,7 +113,7 @@ export let constantRoutes = [
       },
       {
         path: '/product/attr',
-        component: () => import('@/api/product/attr/index.vue'),
+        component: () => import('@/views/product/attr/index.vue'),
         name: 'Attr',
         meta: {
           title: '属性管理',
@@ -122,7 +122,7 @@ export let constantRoutes = [
       },
       {
         path: '/product/spu',
-        component: () => import('@/api/product/spu/index.vue'),
+        component: () => import('@/views/product/spu/index.vue'),
         name: 'Spu',
         meta: {
           title: 'SPU管理',
@@ -131,7 +131,7 @@ export let constantRoutes = [
       },
       {
         path: '/product/sku',
-        component: () => import('@/api/product/sku/index.vue'),
+        component: () => import('@/views/product/sku/index.vue'),
         name: 'Sku',
         meta: {
           title: 'SKU管理',

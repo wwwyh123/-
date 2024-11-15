@@ -27,7 +27,11 @@ onMounted(()=>{
 userStore.GetUserInfo()
 })
 </script>
-
+<script lang="ts">
+export default{
+  name: 'Main'
+}
+</script>
 <style>
 .fade-enter-active,
 .fade-leave-active {

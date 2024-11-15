@@ -9,7 +9,7 @@
         <el-menu background-color="#001529" text-color="white" :collapse="IsFold.IsFold">
           <Menu :menuList="userStore.menuRoutes"></Menu>
         </el-menu>
-      </el-scrollbar>  
+      </el-scrollbar>
     </div>
     <!-- 顶部导航 -->
      <div class="layout_tabbar" :class="{fold:IsFold.IsFold?true:false}">
@@ -63,7 +63,7 @@ $base-tabbar-height: 50px;
         color: white;
       }
   }
-  }
+}
   .layout_tabbar{
     position: fixed;
     top: 0;
@@ -81,7 +81,6 @@ $base-tabbar-height: 50px;
     left: $base-menu-width;
     width: calc(100% - $base-menu-width);
     height: calc(100vh - $base-tabbar-height);
-    background-color: skyblue;
     padding:20px;
     overflow: auto;
     transition: all .3s;

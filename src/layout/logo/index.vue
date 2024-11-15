@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+    <div class="container">
     <img src="../../assets/images/logo.png" alt="">
     <span >硅谷甄选运营平台</span>
   </div>

@@ -1,8 +1,10 @@
 //创建用户相关的小仓库
 import { defineStore } from 'pinia'
+//
 import { reqLogin, reqUserInfo, reqLogout } from '../../api/user'
-// import type { loginForm, loginResponseData } from '../../api/user/type'
+import type { loginFormData, loginResponseData } from '../../api/user/type'
 import type { UserState } from './types/type'
+//引入关于本地存储token的方法
 import { SET_TOKEN, GET_TOKEN, REMOVE_TOKEN } from '../../utils/token'
 //引入路由组件
 import { constantRoutes } from '../../router/routes'
@@ -20,10 +22,9 @@ let useUserStore = defineStore('User', {
   //异步|逻辑的地方
   actions: {
     //用户登录的方法
-    async userLogin(data: any) {
-      let result: any = await reqLogin(data)
+    async userLogin(data: loginFormData) {
+      let result: loginResponseData = await reqLogin(data)
       //登陆成功200
-
       if (result.code == 200) {
         console.log(result)
         this.token = (result.data as string)
